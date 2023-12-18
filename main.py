@@ -24,7 +24,7 @@ def get_text(url):
 
 def get_span_text(url):
     """
-    Retrieves the text content from a given URL.
+    Retrieves the text content from within the SPAN elements of a given URL.
 
     Args:
         url (str): The URL to scrape the text from.
