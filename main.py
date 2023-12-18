@@ -5,13 +5,17 @@ from scraper import Scraper
 
 def main():
     # Prompt the user for a url
-    url = input("Enter a url: ")
+    url: str = input("Enter a url: ")
+
     # instantiate a Scraper object
-    scraper = Scraper(url=url)
+    scraper: Scraper = Scraper(url=url)
+
     # Prompt the user for a scraper method
-    method = input("Enter a scraper method [ 'get_span_text()', 'get_tag_text()', or 'get_text()' ]: ")
+    method: str = input("Enter a scraper method [ 'get_span_text()', 'get_tag_text()', or 'get_text()' ]: ")
+
     # Get the text from the url
-    text = ''.join(scraper[method](url))
+    text: str = ''.join(scraper[method](url))
+
     # Print the text
     print(text)
 
