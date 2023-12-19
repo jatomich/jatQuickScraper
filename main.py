@@ -10,16 +10,20 @@ def main():
     # instantiate a Scraper object
     scraper: Scraper = Scraper(url=url)
 
-    # Prompt the user for a scraper method
-    method: str = input("Enter a scraper method [ 'get_span_text()', 'get_tag_text()', or 'get_text()' ]: ")
+    # Prompt the user to select a scraping method
+    method: str = input("Enter index of desired scraping method [ { 0: 'get_span_text', 1: 'get_tag_text', 2: 'get_text' } ]: ")
+
+    # Perform the selected scraping method
+    text: str = scraper.perform_scraping(method=int(method))
 
     # Get the text from the url
-    text: str = ''.join(scraper[method](url))
+    #text: str = ''.join(scraper[method](url))
 
     # Print the text
     print(text)
 
 
 # Call the main function
-main()
+if __name__ == '__main__':
+    main()
 
