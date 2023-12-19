@@ -58,3 +58,25 @@ class Scraper:
         text = self.soup.get_text()
         # Return the text
         return text
+
+    def get_title(self) -> str:
+        """
+        Retrieves the title of a given URL.
+
+        Returns:
+            str: The title of the URL.
+        """
+        # Get the title from the html
+        title = self.soup.title.string
+        # Return the title
+        return title
+
+    def perform_scraping(self, method: int) -> str:
+        # Convert the method to an int
+        method: int = int(method)
+        if method == 0:
+            return self.get_span_text()
+        elif method == 1:
+            return self.get_tag_text()
+        elif method == 2:
+            return self.get_text()
