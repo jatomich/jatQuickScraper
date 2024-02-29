@@ -1,26 +1,35 @@
 '''Description: This file contains the main function within which the user is prompted for a scraper method
 and a url to scrape.'''
-from scraper import Scraper
-
+from scrapers import StarScraper, DumbScraper
 
 def main():
-    # Prompt the user for a url
-    url: str = input("Enter a url: ")
+    # Choose a scraper type
+    scraper_choice = int(input("Select a WebScraper | 0 = StarScraper | 1 = DumbScraper |"))
 
-    # instantiate a Scraper object
-    scraper: Scraper = Scraper(url=url)
+    match scraper_choice:
+        case 0:
+            scraper = StarScraper()
 
-    # Prompt the user to select a scraping method
-    method: str = input("Enter index of desired scraping method [ { 0: 'get_span_text', 1: 'get_tag_text', 2: 'get_text' } ]: ")
+            # Prompt the user for a url
+            url: str = input("Enter a url: ")
+            
+            # Pass url to make_soup(), yielding parsed html
+            soup = scraper.make_soup(url)
 
-    # Perform the selected scraping method
-    text: str = scraper.perform_scraping(method=int(method))
+            # Pretty print
+            print(soup.prettify())
 
-    # Get the text from the url
-    #text: str = ''.join(scraper[method](url))
+        case 1:
+            scraper = DumScraper()
 
-    # Print the text
-    print(text)
+            # Prompt the user to select a scraping method
+            method: str = input("Enter index of desired scraping method [ { 0: 'get_span_text', 1: 'get_tag_text', 2: 'get_text' } ]: ")
+
+            # Perform the selected scraping method
+            text: str = scraper.perform_scraping(method=int(method))
+
+            # Print the text
+            print(text)
 
 
 # Call the main function
